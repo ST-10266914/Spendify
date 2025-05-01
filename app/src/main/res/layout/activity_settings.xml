@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <EditText
+        android:id="@+id/etMinGoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Minimum Monthly Goal"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/etMaxGoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Maximum Monthly Goal"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp" />
+
+    <Button
+        android:id="@+id/btnSaveGoals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Goals"
+        android:layout_marginTop="24dp"/>
+
+</LinearLayout>

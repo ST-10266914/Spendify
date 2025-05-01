@@ -33,4 +33,11 @@ interface ExpenseDao {
 """)
     suspend fun getAllExpensesWithCategory(): List<ExpenseWithCategory>
 
+    @Query("""
+    SELECT c.name AS categoryName, SUM(e.amount) AS totalAmount
+    FROM Expense e
+    INNER JOIN Category c ON e.categoryId = c.id
+    GROUP BY c.name
+""")
+    suspend fun getCategorySummary(): List<CategorySummary>
 }
