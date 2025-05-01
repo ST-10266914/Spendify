@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1060401481645",
+    "project_id": "prog-e11f6",
+    "storage_bucket": "prog-e11f6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060401481645:android:f4eabb4733ec0fa6dd8324",
+        "android_client_info": {
+          "package_name": "com.example.budgettrackerapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv1Zpgss0tFMHxwealskXOXyGVPwTNF9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060401481645:android:33f28ef9489d39dddd8324",
+        "android_client_info": {
+          "package_name": "com.example.spendify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv1Zpgss0tFMHxwealskXOXyGVPwTNF9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
