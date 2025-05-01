@@ -25,4 +25,12 @@ interface ExpenseDao {
     @Query("SELECT * FROM Expense WHERE categoryId = :categoryId")
     suspend fun getExpensesByCategory(categoryId: Int): List<Expense>
 
+
+    @Query("""
+    SELECT Expense.*, Category.name AS categoryName 
+    FROM Expense 
+    JOIN Category ON Expense.categoryId = Category.id
+""")
+    suspend fun getAllExpensesWithCategory(): List<ExpenseWithCategory>
+
 }
