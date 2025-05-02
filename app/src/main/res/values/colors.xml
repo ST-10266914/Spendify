@@ -2,4 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="button_background">#9C27B0</color>
+
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_400">#7F39FB</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_600">#6A1B9A</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="red">#D32F2F</color>
+    <color name="teal_700">#018786</color>
+    <color name="hint_color">#888888</color>
+    <color name="dark_mode_grey">#3C3D37</color>
 </resources>

@@ -2,7 +2,8 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
 
     <LinearLayout
         android:orientation="vertical"
@@ -16,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Budget Tracker Menu"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:layout_marginBottom="32dp"/>
 
@@ -23,6 +25,7 @@
             android:id="@+id/btnAddExpense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_200"
             android:text="Add New Expense" />
 
         <Button
@@ -30,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Expenses"
+            android:backgroundTint="@color/purple_200"
             android:layout_marginTop="16dp"/>
 
         <Button
@@ -37,6 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Manage Categories"
+            android:backgroundTint="@color/purple_200"
             android:layout_marginTop="16dp"/>
 
         <Button
@@ -44,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Category Summary"
+            android:backgroundTint="@color/purple_200"
             android:layout_marginTop="16dp"/>
 
         <Button
@@ -51,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Min/Max Goal"
+            android:backgroundTint="@color/purple_200"
             android:layout_marginTop="16dp"/>
 
         <Button

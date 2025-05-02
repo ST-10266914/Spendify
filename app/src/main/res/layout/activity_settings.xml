@@ -4,13 +4,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="@color/black">
 
     <EditText
         android:id="@+id/etMinGoal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Minimum Monthly Goal"
+        android:background="@color/white"
         android:inputType="numberDecimal"
         android:minHeight="48dp" />
 
@@ -19,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:background="@color/white"
         android:hint="Maximum Monthly Goal"
         android:inputType="numberDecimal"
         android:minHeight="48dp" />
@@ -27,6 +30,7 @@
         android:id="@+id/btnSaveGoals"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_200"
         android:text="Save Goals"
         android:layout_marginTop="24dp"/>
 

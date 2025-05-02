@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="16dp"
-    android:background="?android:attr/selectableItemBackground">
+    android:background="@color/dark_mode_grey">
 
     <!-- Expense Title -->
     <TextView
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Expense Title"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:ellipsize="end"
         android:maxLines="1" />
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:text="$0.00"
         android:textSize="16sp"
+        android:textColor="@color/white"
         android:layout_marginStart="8dp"
         android:gravity="end"
         android:maxLines="1" />
@@ -50,12 +52,14 @@
             android:id="@+id/editButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_200"
             android:text="Edit" />
 
         <Button
             android:id="@+id/deleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_200"
             android:text="Delete" />
     </LinearLayout>
 

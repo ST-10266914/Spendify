@@ -4,13 +4,16 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="@android:color/black">
 
     <EditText
         android:id="@+id/etNewCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter new category"
+        android:backgroundTint="@color/white"
+        android:background="@color/dark_mode_grey"
         android:minHeight="48dp" />
 
     <Button
@@ -18,12 +21,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Category"
+        android:backgroundTint="@color/purple_200"
+        android:textColor="#FFFFFF"
         android:layout_marginTop="8dp"/>
 
     <ListView
         android:id="@+id/categoryListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:layout_marginTop="16dp"/>
 
 
