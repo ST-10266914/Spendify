@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 
 @Dao
@@ -26,11 +27,8 @@ interface ExpenseDao {
     suspend fun getExpensesByCategory(categoryId: Int): List<Expense>
 
 
-    @Query("""
-    SELECT Expense.*, Category.name AS categoryName 
-    FROM Expense 
-    JOIN Category ON Expense.categoryId = Category.id
-""")
+    @Transaction
+    @Query("SELECT * FROM Expense")
     suspend fun getAllExpensesWithCategory(): List<ExpenseWithCategory>
 
     @Query("""

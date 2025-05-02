@@ -27,7 +27,7 @@ class ExpenseListAdapter(context: Context,
 
 
         amountTextView.text = "$${expense.expense.amount}"
-        categoryTextView.text = expense.categoryName
+        categoryTextView.text = expense.category.name
 
         editButton.setOnClickListener { onEdit(expense) }
         deleteButton.setOnClickListener { onDelete(expense) }

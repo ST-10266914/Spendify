@@ -10,10 +10,10 @@ import androidx.room.Update
 interface CategoryDao {
 
     @Insert
-    fun insertCategory(category: Category)
+    suspend fun insertCategory(category: Category)
 
     @Query("SELECT * FROM Category")
-    fun getAllCategories(): List<Category>
+    suspend fun getAllCategories(): List<Category>
 
     @Update
     suspend fun updateCategory(category: Category)

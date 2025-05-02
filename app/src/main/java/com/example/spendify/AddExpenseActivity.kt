@@ -67,6 +67,12 @@ class AddExpenseActivity : AppCompatActivity() {
     private fun loadCategories() {
         lifecycleScope.launch {
             val categories = categoryDao.getAllCategories()
+            if (categories.isEmpty()) {
+                Toast.makeText(this@AddExpenseActivity, "Please add categories first.", Toast.LENGTH_LONG).show()
+                finish()
+                return@launch
+            }
+
             categoryList = categories.map { it.name }
             val adapter = ArrayAdapter(this@AddExpenseActivity, android.R.layout.simple_spinner_item, categoryList)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -94,10 +100,17 @@ class AddExpenseActivity : AppCompatActivity() {
     private fun saveExpense() {
         val amount = etAmount.text.toString().toDoubleOrNull()
         val description = etDescription.text.toString()
+
+        if (spCategory.adapter == null || spCategory.selectedItem == null) {
+            Toast.makeText(this, "Please wait for categories to load.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val selectedCategoryName = spCategory.selectedItem.toString()
 
         if (amount != null) {
-            // Find the Category object that matches the selected name
+            btnSaveExpense.isEnabled = false // ✅ Prevent double tap
+
             lifecycleScope.launch {
                 val categories = categoryDao.getAllCategories()
                 val matchedCategory = categories.find { it.name == selectedCategoryName }
@@ -111,20 +124,16 @@ class AddExpenseActivity : AppCompatActivity() {
                     )
 
                     expenseDao.insertExpense(expense)
-                    Toast.makeText(this@AddExpenseActivity, "Expense saved!", Toast.LENGTH_SHORT)
-                        .show()
+
+                    Toast.makeText(this@AddExpenseActivity, "Expense saved!", Toast.LENGTH_SHORT).show()
                     finish()
                 } else {
-                    Toast.makeText(
-                        this@AddExpenseActivity,
-                        "Selected category not found.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@AddExpenseActivity, "Selected category not found.", Toast.LENGTH_SHORT).show()
+                    btnSaveExpense.isEnabled = true // Re-enable on error
                 }
             }
         } else {
             Toast.makeText(this, "Please enter a valid amount.", Toast.LENGTH_SHORT).show()
         }
-
     }
 }

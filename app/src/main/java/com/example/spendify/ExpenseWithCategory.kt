@@ -1,9 +1,15 @@
 package com.example.spendify
 
+import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.Relation
 
 @Entity
 data class ExpenseWithCategory(
-    val expense: Expense,
-    val categoryName: String
+    @Embedded val expense: Expense,
+    @Relation(
+        parentColumn = "categoryId",
+        entityColumn = "id"
+    )
+    val category: Category
 )

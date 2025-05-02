@@ -28,6 +28,10 @@ class MainActivity : AppCompatActivity() {
         btnSettings = findViewById(R.id.btnSettings)
         btnLogout = findViewById(R.id.btnLogout)
 
+        btnManageCategories.setOnClickListener {
+            startActivity(Intent(this, CategoryListActivity::class.java))
+        }
+
         btnAddExpense.setOnClickListener {
             startActivity(Intent(this, AddExpenseActivity::class.java))
         }
@@ -36,9 +40,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ExpenseListActivity::class.java))
         }
 
-        btnManageCategories.setOnClickListener {
-            startActivity(Intent(this, CategoryListActivity::class.java))
-        }
 
         btnCategorySummary.setOnClickListener {
             startActivity(Intent(this, CategorySummaryActivity::class.java))
