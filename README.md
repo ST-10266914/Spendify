@@ -27,11 +27,6 @@ Spendify is a simple and intuitive budget tracking app built for Android using *
 
 ---
 
-## 📷 Screenshots
-
-> _You can add screenshots here once available._
-
----
 ## ✅ How to Run
 
 1. Clone this repo in Android Studio
