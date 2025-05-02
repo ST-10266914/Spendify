@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="@color/real_dark_mode_grey">
 
     <LinearLayout
         android:orientation="vertical"
@@ -15,6 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Amount"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
             android:inputType="numberDecimal"
             android:minHeight="48dp" />
 
@@ -23,6 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
             android:hint="Description"
             android:minHeight="48dp" />
 
@@ -31,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:background="@color/white"
             android:minHeight="48dp" />
 
 
@@ -48,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save Expense"
+            android:backgroundTint="@color/purple_200"
             android:layout_marginTop="20dp"/>
 
     </LinearLayout>

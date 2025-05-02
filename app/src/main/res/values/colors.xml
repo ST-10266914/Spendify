@@ -14,4 +14,5 @@
     <color name="teal_700">#018786</color>
     <color name="hint_color">#888888</color>
     <color name="dark_mode_grey">#3C3D37</color>
+    <color name="real_dark_mode_grey">#121212</color>
 </resources>

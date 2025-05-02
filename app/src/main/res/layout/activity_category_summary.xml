@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    android:background="@android:color/black">
+    android:background="@color/real_dark_mode_grey">
 
 
     <Button
