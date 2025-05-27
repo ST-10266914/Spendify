@@ -40,7 +40,26 @@
         android:textSize="14sp"
         android:visibility="gone" />
 
+    <TextView
+        android:id="@+id/startDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start: YYYY-MM-DD"
+        android:textSize="13sp"
+        android:textColor="#666666"
+        android:layout_marginTop="4dp" />
+
     <!-- Edit and Delete buttons -->
+
+    <TextView
+        android:id="@+id/endDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="End: YYYY-MM-DD"
+        android:textColor="#666666"
+        android:textSize="13sp" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

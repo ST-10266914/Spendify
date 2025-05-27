@@ -53,6 +53,15 @@
             android:layout_marginTop="16dp"/>
 
         <Button
+            android:id="@+id/btnViewGraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Spending Graph"
+            android:backgroundTint="@color/purple_200"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
             android:id="@+id/btnSettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

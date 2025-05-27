@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnViewExpenses: Button
     private lateinit var btnManageCategories: Button
     private lateinit var btnCategorySummary: Button
+    private lateinit var btnViewGraph: Button
     private lateinit var btnSettings: Button
     private lateinit var btnLogout: Button
 
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         btnViewExpenses = findViewById(R.id.btnViewExpenses)
         btnManageCategories = findViewById(R.id.btnManageCategories)
         btnCategorySummary = findViewById(R.id.btnCategorySummary)
+        btnViewGraph = findViewById<Button>(R.id.btnViewGraph)
         btnSettings = findViewById(R.id.btnSettings)
         btnLogout = findViewById(R.id.btnLogout)
 
@@ -43,6 +45,10 @@ class MainActivity : AppCompatActivity() {
 
         btnCategorySummary.setOnClickListener {
             startActivity(Intent(this, CategorySummaryActivity::class.java))
+        }
+
+        btnViewGraph.setOnClickListener {
+            startActivity(Intent(this, SpendingGraphActivity::class.java))
         }
 
         btnSettings.setOnClickListener {

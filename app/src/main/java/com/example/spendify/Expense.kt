@@ -10,4 +10,6 @@ data class Expense(
     val description: String,
     val categoryId: Int,
     val photoUri: String? = null,
+    val startDate: String, // e.g., "2025-05-26"
+    val endDate: String
 )

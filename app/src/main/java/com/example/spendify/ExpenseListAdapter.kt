@@ -24,11 +24,14 @@ class ExpenseListAdapter(context: Context,
         val categoryTextView = view.findViewById<TextView>(R.id.categoryTextView)
         val editButton = view.findViewById<Button>(R.id.editButton)
         val deleteButton = view.findViewById<Button>(R.id.deleteButton)
+        val startDateTextView = view.findViewById<TextView>(R.id.startDateTextView)
+        val endDateTextView = view.findViewById<TextView>(R.id.endDateTextView)
 
 
         amountTextView.text = "$${expense.expense.amount}"
         categoryTextView.text = expense.category.name
-
+        startDateTextView.text = "Start: ${expense.expense.startDate}"
+        endDateTextView.text = "End: ${expense.expense.endDate}"
         editButton.setOnClickListener { onEdit(expense) }
         deleteButton.setOnClickListener { onDelete(expense) }
 

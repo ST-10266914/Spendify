@@ -35,6 +35,8 @@ class AddExpenseActivity : AppCompatActivity() {
     private lateinit var btnSaveExpense: Button
     private lateinit var ivPhoto: ImageView
     private var photoUri: String? = null
+    private lateinit var startDateEditText: EditText
+    private lateinit var endDateEditText: EditText
 
     private val REQUEST_IMAGE_PICK = 1
 
@@ -51,6 +53,8 @@ class AddExpenseActivity : AppCompatActivity() {
         spCategory = findViewById(R.id.spCategory)
         btnSaveExpense = findViewById(R.id.btnSaveExpense)
         ivPhoto = findViewById(R.id.ivPhoto)
+        startDateEditText = findViewById(R.id.startDateEditText)
+        endDateEditText = findViewById(R.id.endDateEditText)
 
         loadCategories()
 
@@ -59,9 +63,29 @@ class AddExpenseActivity : AppCompatActivity() {
             openGallery()
         }
 
+        startDateEditText.setOnClickListener { showDatePickerDialog(startDateEditText) }
+        endDateEditText.setOnClickListener { showDatePickerDialog(endDateEditText) }
+
+        val expenseId = intent.getIntExtra("expenseId", -1)
+        if (expenseId != -1) {
+            lifecycleScope.launch {
+                val existing = expenseDao.getExpenseById(expenseId)
+                if (existing != null) {
+                    etAmount.setText(existing.amount.toString())
+                    etDescription.setText(existing.description)
+                    startDateEditText.setText(existing.startDate)
+                    endDateEditText.setText(existing.endDate)
+                    // Set spinner category if needed
+                }
+            }
+        }
+
+
+
         btnSaveExpense.setOnClickListener {
             saveExpense()
         }
+
     }
 
     private fun loadCategories() {
@@ -97,9 +121,20 @@ class AddExpenseActivity : AppCompatActivity() {
         }
     }
 
+    private fun showDatePickerDialog(target: EditText) {
+        val calendar = Calendar.getInstance()
+        val datePicker = DatePickerDialog(this, { _, year, month, dayOfMonth ->
+            val date = "${year}-${month + 1}-${dayOfMonth}"
+            target.setText(date)
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+        datePicker.show()
+    }
+
     private fun saveExpense() {
         val amount = etAmount.text.toString().toDoubleOrNull()
         val description = etDescription.text.toString()
+        val startDate = startDateEditText.text.toString()
+        val endDate = endDateEditText.text.toString()
 
         if (spCategory.adapter == null || spCategory.selectedItem == null) {
             Toast.makeText(this, "Please wait for categories to load.", Toast.LENGTH_SHORT).show()
@@ -120,7 +155,9 @@ class AddExpenseActivity : AppCompatActivity() {
                         amount = amount,
                         description = description,
                         categoryId = matchedCategory.id,
-                        photoUri = photoUri
+                        photoUri = photoUri,
+                        startDate = startDate,
+                        endDate = endDate
                     )
 
                     expenseDao.insertExpense(expense)

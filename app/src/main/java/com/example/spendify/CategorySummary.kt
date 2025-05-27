@@ -5,5 +5,5 @@ import androidx.room.Entity
 @Entity
 data class CategorySummary(
     val categoryName: String,
-    val totalAmount: Double
+    val totalAmount: Double,
 )
