@@ -3,6 +3,7 @@ package com.example.spendify
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -31,54 +32,72 @@ class SpendingGraphActivity : AppCompatActivity() {
         expenseDao = AppDatabase.getDatabase(this).expenseDao()
 
         showSpendingGraph()
+
+
     }
 
     private fun showSpendingGraph() {
         lifecycleScope.launch {
             val expensesByCategory = expenseDao.getTotalSpentPerCategoryLastMonth()
 
-            // Load global min/max goals from SharedPreferences
             val sharedPref = getSharedPreferences("goals", Context.MODE_PRIVATE)
             val minGoal = sharedPref.getFloat("minGoal", 0f)
             val maxGoal = sharedPref.getFloat("maxGoal", 0f)
 
-            val entries = ArrayList<BarEntry>()
-            val minGoalEntries = ArrayList<BarEntry>()
-            val maxGoalEntries = ArrayList<BarEntry>()
+            val stackedEntries = ArrayList<BarEntry>()
             val labels = ArrayList<String>()
 
             expensesByCategory.forEachIndexed { index, item ->
-                val categoryName = item.categoryName
                 val spent = item.totalSpent
+                val remainingToMin = (minGoal - spent).coerceAtLeast(0f)
+                val remainingToMax = (maxGoal - (spent + remainingToMin)).coerceAtLeast(0f)
 
-                entries.add(BarEntry(index.toFloat(), spent))
-                minGoalEntries.add(BarEntry(index.toFloat(), minGoal))
-                maxGoalEntries.add(BarEntry(index.toFloat(), maxGoal))
-                labels.add(categoryName)
+                val barValues = floatArrayOf(spent, remainingToMin, remainingToMax)
+                stackedEntries.add(BarEntry(index.toFloat(), barValues))
+                labels.add(item.categoryName)
             }
 
-            val spentDataSet = BarDataSet(entries, "Amount Spent").apply {
-                color = Color.BLUE
+            val stackedDataSet = BarDataSet(stackedEntries, "Goals").apply {
+                setColors(
+                    Color.BLUE,   // Spent
+                    Color.GREEN,  // Min Goal portion
+                    Color.RED     // Remaining to Max Goal
+                )
+                stackLabels = arrayOf("Spent", "Min Goal", "Remaining")
             }
 
-            val minDataSet = BarDataSet(minGoalEntries, "Min Goal").apply {
-                color = Color.GREEN
-            }
+            val barData = BarData(stackedDataSet)
+            barData.barWidth = 0.2f
 
-            val maxDataSet = BarDataSet(maxGoalEntries, "Max Goal").apply {
-                color = Color.RED
-            }
-
-            val barData = BarData(spentDataSet, minDataSet, maxDataSet)
             barChart.data = barData
 
             val xAxis = barChart.xAxis
-            xAxis.valueFormatter = IndexAxisValueFormatter(labels)
             xAxis.position = XAxis.XAxisPosition.BOTTOM
+            xAxis.valueFormatter = IndexAxisValueFormatter(labels)
+            xAxis.setDrawGridLines(false)
+            xAxis.setDrawAxisLine(true)
             xAxis.granularity = 1f
+            xAxis.labelRotationAngle = -45f
+            xAxis.labelCount = labels.size
 
+            barChart.axisRight.isEnabled = false
+            barChart.axisLeft.axisMinimum = 0f
             barChart.description.isEnabled = false
+            barChart.setFitBars(true)
             barChart.invalidate()
+
+
+            val legend = barChart.legend
+            legend.textSize = 14f  // Increase text size
+            legend.formSize = 14f  // Increase form/shape size
+            legend.isWordWrapEnabled = true  // Wrap if legend items are long
+
+            if (expensesByCategory.isEmpty()) {
+                barChart.clear()
+                barChart.setNoDataText("No expenses to display in the last 30 days.")
+            }
         }
     }
+
+
 }

@@ -11,6 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/outline_arrow_back_24"
+            android:contentDescription="Back" />
+
         <EditText
             android:id="@+id/etAmount"
             android:layout_width="match_parent"

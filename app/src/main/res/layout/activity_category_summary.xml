@@ -8,6 +8,16 @@
     android:background="@color/real_dark_mode_grey">
 
 
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/outline_arrow_back_24"
+        android:contentDescription="Back" />
+
+
     <Button
         android:id="@+id/btnViewSummary"
         android:layout_width="match_parent"

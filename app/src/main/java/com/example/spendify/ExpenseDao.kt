@@ -43,7 +43,6 @@ interface ExpenseDao {
     SELECT c.name AS categoryName, SUM(e.amount) AS totalSpent
     FROM Expense e
     INNER JOIN Category c ON e.categoryId = c.id
-    WHERE DATE(e.startDate) >= DATE('now', '-1 month') AND DATE(e.endDate) <= DATE('now')
     GROUP BY c.name
 """)
     suspend fun getTotalSpentPerCategoryLastMonth(): List<SpendingSummary>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ListView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -50,6 +51,10 @@ class CategoryListActivity : AppCompatActivity() {
                     loadCategories()
                 }
             }
+        }
+        val backButton = findViewById<ImageButton>(R.id.backButton)
+        backButton.setOnClickListener {
+            finish()  // Go back to previous activity
         }
     }
 

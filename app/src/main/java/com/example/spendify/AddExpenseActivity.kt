@@ -10,6 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
@@ -66,18 +67,23 @@ class AddExpenseActivity : AppCompatActivity() {
         startDateEditText.setOnClickListener { showDatePickerDialog(startDateEditText) }
         endDateEditText.setOnClickListener { showDatePickerDialog(endDateEditText) }
 
-        val expenseId = intent.getIntExtra("expenseId", -1)
-        if (expenseId != -1) {
-            lifecycleScope.launch {
-                val existing = expenseDao.getExpenseById(expenseId)
-                if (existing != null) {
-                    etAmount.setText(existing.amount.toString())
-                    etDescription.setText(existing.description)
-                    startDateEditText.setText(existing.startDate)
-                    endDateEditText.setText(existing.endDate)
-                    // Set spinner category if needed
-                }
-            }
+//        val expenseId = intent.getIntExtra("expenseId", -1)
+//        if (expenseId != -1) {
+//            lifecycleScope.launch {
+//                val existing = expenseDao.getExpenseById(expenseId)
+//                if (existing != null) {
+//                    etAmount.setText(existing.amount.toString())
+//                    etDescription.setText(existing.description)
+//                    startDateEditText.setText(existing.startDate)
+//                    endDateEditText.setText(existing.endDate)
+//                    // Set spinner category if needed
+//                }
+//            }
+//        }
+
+        val backButton = findViewById<ImageButton>(R.id.backButton)
+        backButton.setOnClickListener {
+            finish()  // Go back to previous activity
         }
 
 

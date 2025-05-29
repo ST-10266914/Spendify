@@ -54,6 +54,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation ("com.itextpdf:itext7-core:7.2.3")
 
     val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
